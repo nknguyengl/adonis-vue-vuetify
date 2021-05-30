@@ -1,4 +1,4 @@
-const { join } = require('path')
+const { join, resolve } = require('path')
 const Encore = require('@symfony/webpack-encore')
 
 /*
@@ -181,11 +181,16 @@ Encore.configureDevServerOptions((options) => {
 | sure to install the required dependencies.
 |
 */
-// Encore.enableVueLoader(() => {}, {
-//   version: 3,
-//   runtimeCompilerBuild: false,
-//   useJsx: false
-// })
+Encore.enableVueLoader(() => {}, {
+  version: 2,
+  runtimeCompilerBuild: false,
+  useJsx: false
+})
+
+Encore.addAliases({
+  '@': resolve(__dirname, 'resources/js'),
+  '~': resolve(__dirname, 'resources/js'),
+})
 
 /*
 |--------------------------------------------------------------------------
